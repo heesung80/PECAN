@@ -1,4 +1,4 @@
-# Pose classification using 3D atomic structure-based neural networks for ion channel-ligand docking
+# PECAN - PosE Classification with 3D Atomic Networks
 Identifying the correct binding pose of ligand is important in docking based virtual high-throughput screening. This code implements two convolutional neural network approaches: a 3D convolutional neural network (3D-CNN) and an attention-based point cloud network (PCN) to improves virtual high-throughput screening to identify novel molecules against each target protein. The code is written in python with Tensorflow and Pytorch.
 ## Prerequsite
 - [PyTorch](https://pytorch.org)
