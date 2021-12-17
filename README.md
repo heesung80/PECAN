@@ -22,7 +22,7 @@ To train, ```3D-CNN/PCN_main_train.py``` To test/evaluate, run ```3D-CNN/PCN_mai
 python PCN_main_eval.py --device-name cuda:1  --data-dir /Data  --dataset-type 1  --mlhdf-fn pdbbind2019_core_docking.hdf  --csv-fn pdbbind2019_core.csv  --cmlhdf-fn pdbbind2019_core_crystal.hdf  --model-path /Model_Checkpoint/PCN/PCN_a.pth
 ```
 ### Pre-trained weights
-We trained all of the networks above on pdbbind 2019 datasets. Particularly, we used refined datasets for training, and evaluated the model on the core set (see Data/pdbbind2019_core_docking.hdf).
+We trained all of the networks above on pdbbind 2019 datasets. Particularly, we used refined datasets for training, and evaluated the model on the core set (see Data/pdbbind2019_core_docking.hdf). (https://drive.google.com/drive/folders/17aTy-5Epvvwcpn_Kxwn7ksyUU2EGed3g?usp=sharing)
 
 
 ## Authors
