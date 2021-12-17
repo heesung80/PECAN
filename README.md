@@ -3,6 +3,8 @@ Identifying the correct binding pose of ligand is important in docking based vir
 ## Prerequsite
 - [PyTorch](https://pytorch.org)
 - [Open Drug Discovery Tool Kit (ODDT)](https://oddt.readthedocs.io/en/latest/)
+- [Open Babel](https://openbabel.org/docs/dev/Installation/install.html)
+- [RDkit](https://www.rdkit.org)
 
 ## Running the application
 
