@@ -27,3 +27,6 @@ We trained all of the networks above on pdbbind 2019 datasets. Particularly, we 
 
 ## Authors
 Pose-Classifier was created by Heesung Shim ( hsshim@ucdavis.edu )
+
+## License
+PECAN is distributed under the terms of the MIT license. All new contributions must be made under this license. See LICENSE in this directory for the terms of the license.
