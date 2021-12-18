@@ -28,13 +28,13 @@ def valid_file(a_path):
 
 # program arguments
 parser = argparse.ArgumentParser()
-parser.add_argument("--device-name", default="cuda:0", help="use cpu or cuda:0, cuda:1 ...")
-parser.add_argument("--data-dir", default="", help="dataset directory")
+parser.add_argument("--device-name", default="cpu", help="use cpu or cuda:0, cuda:1 ...")
+parser.add_argument("--data-dir", default="../../Data", help="dataset directory")
 parser.add_argument("--dataset-type", type=float, default=1, help="ml-hdf version, (1: for fusion, 1.5: for cfusion 2: ml-hdf v2)")
-parser.add_argument("--mlhdf-fn", default="Data/pdbbind2019_core.csv", help="training docking ml-hdf path")
-parser.add_argument("--cmlhdf-fn", default="Data/pdbbind2019_core_crystal.hdf", help="training crystal ml-hdf path")
-parser.add_argument("--csv-fn", default="Data/pdbbind2019_core.csv", help="training csv file path")
-parser.add_argument("--model-path", default="Model_Checkpoint/PCN_a.pth", help="model checkpoint file path")
+parser.add_argument("--mlhdf-fn", default="pdbbind2019_core_docking.hdf", help="training docking ml-hdf path")
+parser.add_argument("--cmlhdf-fn", default="pdbbind2019_core_crystal.hdf", help="training crystal ml-hdf path")
+parser.add_argument("--csv-fn", default="pdbbind2019_core.csv", help="training csv file path")
+parser.add_argument("--model-path", default="../../Model_Checkpoint/PCN_a.pth", help="model checkpoint file path")
 parser.add_argument("--use-feat", default=False, action="store_true", help="use ligand and interaction feature or not")
 parser.add_argument("--max-atoms", type=int, default=2000, help="maximum number of atoms")
 parser.add_argument("--batch-size", type=int, default=50, help="mini-batch size")
@@ -91,8 +91,8 @@ def eval():
 	if not valid_file(args.model_path):
 		print("checkpoint not found! %s" % args.model_path)
 		return
-	#checkpoint = torch.load(args.model_path, map_location=device)
-	checkpoint = torch.load(args.model_path)
+	checkpoint = torch.load(args.model_path, map_location=device)
+	#checkpoint = torch.load(args.model_path)
 	model_state_dict = checkpoint.pop("model_state_dict")
 	strip_prefix_if_present(model_state_dict, "module.")
 	epoch = checkpoint["epoch"]
