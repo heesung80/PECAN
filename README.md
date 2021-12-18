@@ -34,7 +34,7 @@ For other dataset, please contact the author.
 
 ## Authors
 
-Pose-Classifier was created by Heesung Shim (hsshim@ucdavis.edu)
+PECAN was created by Heesung Shim (hsshim@ucdavis.edu)
 
 ## License
 
