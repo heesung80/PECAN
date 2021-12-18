@@ -20,8 +20,6 @@ from scipy.spatial.transform import Rotation as R
 from torch.utils.data import Dataset
 
 
-# In[34]:
-
 
 class Dataset_to_3d(Dataset):
     def __init__(self, file_name, csv_file, cfile_name="", i_feature=False, relative_size=True, size_angstrom=48, size_dim=48, atom_radius=1, atom_radii=None, sigma=1,affine_trans = False):
@@ -66,8 +64,6 @@ class Dataset_to_3d(Dataset):
     
     def __getitem__(self, idx): #, pose_name):
         pdbid, poseid, poselabel = self.pose_list[idx]
-        print(pdbid)
-        print(poseid)
         if int(poseid) >= 1:
             input_data = self.hdf[pdbid]['pybel']['processed']['docking'][poseid]['data'][:]
         else:

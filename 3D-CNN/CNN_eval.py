@@ -27,35 +27,24 @@ def valid_file(a_path):
     return os.path.isfile(a_path) and os.path.getsize(a_path) > 0
 
 
-# In[15]:
-
-
 use_cuda = torch.cuda.is_available()
 device = torch.device("cuda:0" if use_cuda else "cpu")
 print(use_cuda, device)
 
-# In[ ]:
-
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--data-hdf", default="Data/pdbbind2019_core_docking.hdf", help="dataset directory")
-parser.add_argument("--data-csv", default="Data/pdbbind2019_core.csv", help="dataset csv file")
-parser.add_argument("--data-chdf", default="Data/pdbbind2019_core_crystal.hdf", help="dataset crystal hdf file")
-parser.add_argument("--model-path", default="Model_Checkpoint/CNN_a.pth", help="model checkpoint file path")
-parser.add_argument("--model-type", default=3, help="3: 3D-CNN, 5: 3D-CNN_i, 6: 3D-CNN_a 7: 3D-CNN_ia")
+parser.add_argument("--data-hdf", default="/../../Data/pdbbind2019_core_docking.hdf", help="dataset directory")
+parser.add_argument("--data-chdf", default="/../../Data/pdbbind2019_core_crystal.hdf", help="dataset crystal hdf file")
+parser.add_argument("--data-csv", default="/../../Data/pdbbind2019_core.csv", help="dataset csv file")
+parser.add_argument("--model-path", default="/../../Model_Checkpoint/CNN_a.pth", help="model checkpoint file path")
+parser.add_argument("--model-type", default=6, help="3: 3D-CNN, 5: 3D-CNN_i, 6: 3D-CNN_a 7: 3D-CNN_ia")
 parser.add_argument("--batch-size", default=50, help="mini-batch size")
 parser.add_argument("--number-gpu",default = 1, help = "number of gpu")
-parser.add_argument("--output-prefix", default="", help="")
-args = parser.parse_args()
+parser.add_argument("--output-prefix", default="3D-CNN_a", help="")
+#args = parser.parse_args()
+args = parser.parse_args(args=[]) # in Google colab, argument parsing isn't supported.
 
 
-# In[16]:
-
-
-
-
-
-# In[17]:
 
 if int(args.model_type) == 1:
     dataset = Dataset_to_3d(args.data_hdf, args.data_csv)
@@ -72,20 +61,15 @@ elif int(args.model_type) == 6:
     print("check -modeltype6!!")
     dataset = Dataset_to_3d(args.data_hdf, args.data_csv, args.data_chdf)
 elif int(args.model_type) == 7:
-    print("check -modeltype6!!")
+    print("check -modeltype7!!")
     dataset = Dataset_to_3d(args.data_hdf, args.data_csv, args.data_chdf, i_feature=True)
 else:
     dataset = Dataset_to_3d(args.data_hdf, args.data_csv, i_feature=True )
 
 
-# In[18]:
-
-
 dataloader = DataLoader(dataset, batch_size = int(args.batch_size), shuffle=False, num_workers=0, worker_init_fn=None)
 batch_count = len(dataset) // int(args.batch_size)
 
-
-# In[19]:
 
 
 if int(args.model_type) == 1 or int(args.model_type) == 3 or int(args.model_type) == 6:
